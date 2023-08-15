@@ -1,22 +1,31 @@
 h1 {
     text-align: center;
-    font-size: 54px;
+    font-size: 72px;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 h3, p {
     text-align: center;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+h3 {
+    font-size: 20px;
+}
 table, th, td {
-    border: 2px solid black;
+    border: 2px solid gray;
     border-collapse: collapse;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     padding: 5px;
-    column-width: 100px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    column-width: 80px;
+    flex-wrap: wrap;
 }
 th {
     background-color: lightskyblue;
     font-weight: bold;
+}
+td {
+    background-color: rgb(228, 228, 228);
 }
 select {
     text-align: center;
@@ -25,4 +34,104 @@ select {
     background-color: aliceblue;
     width: 300px;
     font-size: 18px;
+}
+body {
+    padding: 5%;
+}
+.correct {
+    background-color:rgb(147, 211, 83);
+}
+.off {
+    background-color:rgb(240, 240, 97);
+}
+#statsOverlay {
+    position: fixed; /* Sit on top of the page content */
+    display: none; /* Hidden by default */
+    width: 50%; /* Full width (cover the whole page) */
+    height: 50%; /* Full height (cover the whole page) */
+    top: 25%;
+    left: 25%;
+    background-color: rgb(67, 67, 67); /* Black background with opacity */
+    z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+    cursor: pointer; /* Add a pointer on hover */
+}
+#statsHeader {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    color: white;
+    transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    font-size: 36px;
+}
+#statsAllTime {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 50px;
+    color: white;
+    transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+}
+#exit {
+    padding: 5px;
+}
+.overlay {
+    position: fixed; /* Sit on top of the page content */
+    display: none; /* Hidden by default */
+    width: 50%; /* Full width (cover the whole page) */
+    height: 50%; /* Full height (cover the whole page) */
+    top: 25%;
+    left: 25%;
+    background-color: rgb(67, 67, 67); /* Black background with opacity */
+    z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+    cursor: pointer; /* Add a pointer on hover */
+    text-align: center;
+}
+#overlayHeader {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    font-size: 20px;
+    color: white;
+    transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+}
+.guessText {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 24px;
+    color: white;
+    transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+}
+.overlayStats {
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+.overlayShare {
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+.overlayShared {
+    position: absolute;
+    top: 90%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-size: 12px;
+    color: rgb(200, 200, 200);
+}
+#footer {
+    color:rgb(156, 156, 156);
 }

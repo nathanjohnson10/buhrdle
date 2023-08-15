@@ -16,3 +16,15 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('home');
 });
+
+Route::get('/rankings', function (){
+    $csv = array_map('str_getcsv', file('/Users/nathan/Documents/buhrdle/resources/views/combinedrankings.csv')); 
+    array_walk($csv, function(&$row) use ($csv) {
+        $row = array_combine($csv[0], $row); 
+    });
+    
+    array_shift($csv); 
+    $json = json_encode($csv);
+
+    return $json;
+});
