@@ -34,7 +34,8 @@
 
         <select name="players" id="playerList">
         <?php
-            $filehandle = fopen('/Users/nathan/Documents/buhrdle/resources/views/combinedrankings.csv', "r");
+            //$filehandle = fopen('/Users/nathan/Documents/buhrdle/resources/views/combinedrankings.csv', "r");
+            $filehandle = fopen(resource_path() . '/views/combinedrankings.csv', "r");
             while (($row = fgetcsv($filehandle, 0, ",")) != FALSE) {
                 $players = $row[1];
                 $pdga = $row[0];

@@ -18,7 +18,7 @@ Route::get('/', function () {
 });
 
 Route::get('/rankings', function (){
-    $csv = array_map('str_getcsv', file('/Users/nathan/Documents/buhrdle/resources/views/combinedrankings.csv')); 
+    $csv = array_map('str_getcsv', file(resource_path() . '/views/combinedrankings.csv')); 
     array_walk($csv, function(&$row) use ($csv) {
         $row = array_combine($csv[0], $row); 
     });
