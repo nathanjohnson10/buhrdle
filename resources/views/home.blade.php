@@ -35,6 +35,9 @@
         <select name="players" id="playerList">
         <?php
             //$filehandle = fopen('/Users/nathan/Documents/buhrdle/resources/views/combinedrankings.csv', "r");
+
+use App\Models\Result;
+
             $filehandle = fopen(resource_path() . '/views/combinedrankings.csv', "r");
             while (($row = fgetcsv($filehandle, 0, ",")) != FALSE) {
                 $players = $row[1];
@@ -65,7 +68,7 @@
                     <th>Rank</th>
                     <th>Events</th>
                     <th>Wins</th>
-                    <th>Earnings</th>
+                    <!-- <th>Earnings</th> -->
                 </tr>
             </thead>
             <tbody>
@@ -78,7 +81,7 @@
 
         <h3>How to Play</h3>
 
-        <p>Welcome to Buhrdle! The disc golf guessing game. The objective of the game is to correctly identify today's mystery disc golfer. Eligible disc golfers include the top 80 MPO and top 40 FPO players in the world according to <a href="https://statmando.com/" target="_blank">StatMando</a>. To play, choose a disc golfer from the list. Then, you will see how the mystery disc golfer compares to your guess. A green highlight means they are the same in that category, where as yellow means you are close. You get 8 guesses per day, so choose wisely! Good Luck!</p>
+        <p>Welcome to Buhrdle! The disc golf guessing game. The objective of the game is to correctly identify today's mystery disc golfer. Eligible disc golfers include the top 80 MPO and top 40 FPO players in the world according to <a href="https://statmando.com/" target="_blank">StatMando</a>. To play, choose a disc golfer from the list. Then, you will see how the mystery disc golfer compares to your guess. A <mark style="background-color:rgb(147, 211, 83)">green</mark> highlight means they are the same in that category, where as <mark style="background-color: rgb(240, 240, 97);">yellow</mark> means you are close. In the "Home" category Americans will show as their home state, while for non-Americans it will appear as their home country. <mark style="background-color: rgb(240, 240, 97);">Yellow</mark> in this category means that they share the same nationality as the mystery disc golfer. For all numerical categories, the arrow indicates how your guess compares to the mystery disc golfer's stat in that category (except for ranking, where <img src='down-arrow.png' height='20' style='display: inline;'> indicates they have a worse ranking, i.e. a higher number). You get 8 guesses per day, so choose wisely! Good Luck!</p>
         
         <br>
         <br>
@@ -90,7 +93,7 @@
             <button name="quit" id="quit" onclick="statsOff()" style='font-size:12px; background-color:rgb(90, 90, 90);'><i class='fa-solid fa-x'></i></button>
         </div>
         <div id="statsHeader">Stats</div>
-        <div id="statsAllTime">Avg</div>
+        <div id="statsAllTime">Wins: <?php Result::select('select COUNT(id) from results where win = TRUE')?> Attempts: <?php Result::select('select COUNT(id) from results')?> Average Guesses:<?php Result::select('select AVG(num_guesses) from results where win = TRUE')?></div>
     </div>
     <div id="winOverlay" class="overlay">
         <div id="exit" align="right">

@@ -29,21 +29,7 @@ var data;
 })()
 
 const answer = getRandomInt(120);
-
-class Player {
-    constructor(pdga, name, division, state, rank, events, wins, earnings) {
-        this.pdga = pdga;
-        this.name = name;
-        this.division = division;
-        this.state = state;
-        this.rank = rank;
-        this.events = events;
-        this.wins = wins;
-        this.earnings = earnings;
-    }
-}
-
-//var answer = new Player(27523, "Paul McBeth", "MPO", "California", 2, 406, 148, 712297);
+//$results = DB::select('SELECT * from answers where date = CURDATE()');
 
 function buttonClick(){
     var choice = document.getElementById('playerList');
@@ -62,7 +48,7 @@ function buttonClick(){
         var answerRank = parseInt(data[answer].week_rank);
         var answerEvents = parseInt(data[answer].TotalEvents);
         var answerWins = parseInt(data[answer].Wins);
-        var answerEarnings = parseInt(data[answer].Earnings);
+        //var answerEarnings = parseInt(data[answer].Earnings);
 
 
         if (choiceName != 'Guess a Player') {
@@ -88,7 +74,7 @@ function buttonClick(){
             var rankCell = newRow.insertCell(4);
             var eventsCell = newRow.insertCell(5);
             var winsCell = newRow.insertCell(6);
-            var earningsCell = newRow.insertCell(7);
+            //var earningsCell = newRow.insertCell(7);
 
             var pdgaText = document.createTextNode(choiceValue);
             var nameText = document.createTextNode(choiceName);
@@ -97,7 +83,7 @@ function buttonClick(){
             var rankText =  document.createTextNode(data[choiceRow].week_rank);
             var eventsText = document.createTextNode(data[choiceRow].TotalEvents);
             var winsText = document.createTextNode(data[choiceRow].Wins);
-            var earningsText = document.createTextNode("$" + data[choiceRow].Earnings);
+            //var earningsText = document.createTextNode("$" + data[choiceRow].Earnings);
 
             pdgaCell.appendChild(pdgaText); 
             if(parseInt(choiceValue) != answerPDGA && parseInt(choiceValue) >= answerPDGA - 5000 && parseInt(choiceValue) <= answerPDGA + 5000){
@@ -204,6 +190,7 @@ function buttonClick(){
                 winsCell.innerHTML = winsCell.innerHTML + " <img src='up-arrow.png' height='20' style='display: inline;'>"
             }
 
+            /*
             earningsCell.appendChild(earningsText);
             if(data[choiceRow].Earnings != answerEarnings && parseInt(data[choiceRow].Earnings) >= answerEarnings - 10000 && parseInt(data[choiceRow].Earnings) <= answerEarnings + 10000){
                 earningsCell.setAttribute("class", "off");
@@ -223,6 +210,8 @@ function buttonClick(){
             else if(parseInt(data[choiceRow].Earnings) < answerEarnings){
                 earningsCell.innerHTML = earningsCell.innerHTML + " <img src='up-arrow.png' height='20' style='display: inline;'>"
             }
+
+            */
 
             if(choiceValue == answerPDGA){
                 winCountText = "You won in " + guessCount + " guesses.";
