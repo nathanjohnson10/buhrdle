@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\DB;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -15,6 +17,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('home');
+});
+
+Route::get('/test', function () {
+    $guesses = DB::table('guesses')->get();
+    $players = DB::table('players')->get();
+    return view('hometest', ['guesses' => $guesses, 'players' => $players]);
 });
 
 Route::get('/rankings', function (){

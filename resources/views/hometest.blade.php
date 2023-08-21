@@ -33,20 +33,9 @@
         <p id="guessCountP">0 of 8 guesses</p>
 
         <select name="players" id="playerList">
-        <?php
-            //$filehandle = fopen('/Users/nathan/Documents/buhrdle/resources/views/combinedrankings.csv', "r");
-
-use App\Models\Result;
-
-            $filehandle = fopen(resource_path() . '/views/combinedrankings.csv', "r");
-            while (($row = fgetcsv($filehandle, 0, ",")) != FALSE) {
-                $players = $row[1];
-                $pdga = $row[0];
-?>
-            <option value="<?php echo $pdga;?>"><?php echo $players;?></option>
-<?php
-            }
-?>
+            @foreach ($players as $player)
+            <option value='{{$player->pdga_number}}'>{{$player->name}}</option>
+            @endforeach
         </select>
 
         <br>
@@ -68,11 +57,20 @@ use App\Models\Result;
                     <th>Rank</th>
                     <th>Events</th>
                     <th>Wins</th>
-                    <!-- <th>Earnings</th> -->
                 </tr>
             </thead>
             <tbody>
-
+            @foreach ($guesses as $guess)
+                <tr>
+                    <td>{{$guess->$player->name}}</td>
+                    <td>{{$guess->guess_pdga}}</td>
+                    <td>{{$guess->$player->division}}</td>
+                    <td>{{$guess->$player->HomeStateCountry}}</td>
+                    <td>{{$guess->$player->week_rank}}</td>
+                    <td>{{$guess->$player->TotalEvents}}</td>
+                    <td>{{$guess->$player->Wins}}</td>
+                </tr>
+            @endforeach
             </tbody>
         </table>
 
