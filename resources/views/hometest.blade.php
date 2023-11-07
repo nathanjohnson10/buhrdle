@@ -91,7 +91,7 @@
             <button name="quit" id="quit" onclick="statsOff()" style='font-size:12px; background-color:rgb(90, 90, 90);'><i class='fa-solid fa-x'></i></button>
         </div>
         <div id="statsHeader">Stats</div>
-        <div id="statsAllTime">Wins: <?php Result::select('select COUNT(id) from results where win = TRUE')?><br>Attempts: <?php Result::select('select COUNT(id) from results')?><br>Average Guesses: <?php Result::select('select AVG(num_guesses) from results where win = TRUE')?></div>
+        <div id="statsAllTime">Wins: <?php DB::select('select COUNT(id) from results where win = TRUE')?><br>Attempts: <?php DB::select('select COUNT(id) from results')?><br>Average Guesses: <?php Result::select('select AVG(num_guesses) from results where win = TRUE')?></div>
     </div>
     <div id="winOverlay" class="overlay">
         <div id="exit" align="right">

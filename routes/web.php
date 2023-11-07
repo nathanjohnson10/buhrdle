@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Answer;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
 
@@ -20,16 +21,17 @@ Route::get('/', function () {
 });
 
 Route::get('/test', function () {
-    //$guesses = DB::table('guesses')->get();
-    //$players = DB::table('players')->get();
-    //return view('hometest', ['guesses' => $guesses, 'players' => $players]);
-    return view('hometest');
+    return view('hometest', [
+        'answer' => Answer::select('SELECT * from answers where date = CURDATE()')->get(),
+        'players' => DB::table('players')->get(),
+        'guesses' => DB::select('SELECT * FROM guesses')
+    ]);
 });
 
 Route::get('/rankings', function (){
     $csv = array_map('str_getcsv', file(resource_path() . '/views/combinedrankings.csv')); 
     array_walk($csv, function(&$row) use ($csv) {
-        $row = array_combine($csv[0], $row); 
+        $row = array_combine($csv[0], $row);
     });
     
     array_shift($csv); 
