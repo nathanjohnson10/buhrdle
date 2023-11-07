@@ -20,9 +20,10 @@ Route::get('/', function () {
 });
 
 Route::get('/test', function () {
-    $guesses = DB::table('guesses')->get();
-    $players = DB::table('players')->get();
-    return view('hometest', ['guesses' => $guesses, 'players' => $players]);
+    //$guesses = DB::table('guesses')->get();
+    //$players = DB::table('players')->get();
+    //return view('hometest', ['guesses' => $guesses, 'players' => $players]);
+    return view('hometest');
 });
 
 Route::get('/rankings', function (){
